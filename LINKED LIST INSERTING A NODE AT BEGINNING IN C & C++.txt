@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+class LinkedList {
+private:
+    Node* head;
+public:
+    LinkedList() {
+        head = NULL;
+    }
+
+    void push_front(int newElement) {
+        Node* newNode = new Node();
+        newNode->data = newElement;
+        newNode->next = head;
+        head = newNode;
+    }
+
+    void PrintList() {
+        Node* temp = head;
+        if (temp != NULL) {
+            cout << "The list contains: ";
+            while (temp != NULL) {
+                cout << temp->data << " ";
+                temp = temp->next;
+            }
+            cout << endl;
+        }
+        else {
+            cout << "The list is empty.\n";
+        }
+    }
+};
+
+int main() {
+    LinkedList MyList;
+
+    MyList.push_front(10);
+    MyList.push_front(20);
+    MyList.push_front(30);
+    MyList.push_front(5);
+    MyList.PrintList();
+
+    system("pause");
+    return 0;
+}

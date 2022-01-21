@@ -1,0 +1,17 @@
+
+	Linked Lists vs Array Lists.
+
+			Array List 				Linked List
+cost
+of accessing		constant (W)				O(n) (L)
+time
+
+Memory
+Requirements            Fixed Size (L)				no unused memory, extra memory for pointers (W)
+
+Cost Of
+Inserting 		O(n) - begin 					O(1) - begin
+an Element		O(1) - end 					O(n) - end
+			O(n) - at i position				O(n) - at i position
+
+			Ease of use

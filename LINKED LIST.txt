@@ -1,0 +1,37 @@
+
+	LINKED LISTS.
+
+	int x;
+	//int = 4 bytes
+	x = 8;
+	int A[4]; //16 bytes
+	A[3] = 2; //constant time
+	
+	So, when we say to the memory manager the int x, it stores it in his memory cell. When we are
+	declaring a memory manager that we need an array that contains A[4] integers, memory manager 
+	stores it behind the int x, so we can't extend our A[4] to A[5] and etc, but there is a solution.
+	Memory manager can copy the previous array and create a new one after the INT X and doubles it's size
+	in case if we ask for some new spaces. But, if that space would be insufficient then Linked List comes to help us.
+	
+	When we are using Linked List, we are giving 4 integers without putting it as an array, so computer 
+	writes them wherever he wants. For example: 1 int = 6, 2 int = 5, 3 int = 4, 4 int = 2.
+	6 = 204 (memory address); 5 = 217 (memory address), 4 = 232 (memory address), 2 = 242 (memory address).
+	To connect them, we are giving a memory manager a command to create a place next to each integer, so we write
+	there an address of a next integer, for example: next to int 6 we write int 5's memory address (217) and if there is
+	no any int's left we just write next to the int a zero.
+	| 6 | 217 | | | | 5 | 232 | | | | 4 | 242 | | | | 2 | 0 |
+	
+	Code:
+	6, 5, 4, 2
+	struct node { 
+	int data; //4 bytes
+	node* next; //4 bytes
+	}
+	
+	If we want to insert a new int, then we give a command to memory manager that we need another inserted int 3 (for example), so 
+	memory manager adds it to the end of the list in 252 address. It would be like that after an insertion:
+	| 6 | 217 | | | | 5 | 232 | | | | 4 | 242 | | | | 2 | 252 | | | | 3 | 0 |
+
+	Access to elements - T proportional n, time cost O(n)
+	Insertion - O(n)
+	Deletion - O(n)

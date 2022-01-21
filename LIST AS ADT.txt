@@ -1,0 +1,74 @@
+
+	List As ADT.
+
+	Static List:
+	-Store a given num of element of a given data type;
+	-Write and Modify element at a position;
+	-Read element at a position.
+
+	Array:
+	int array[10];
+	array[0] = 2;
+ 	Print array[i];
+
+	Dynamic List:
+	-Empty List (has size 0);
+	-Insert An Element in the list;
+	-Remove An Element;
+	-Count An Elements;
+	-Read/Modify element at a position;
+	-Specify data type.
+
+	Dynamic Array:
+	int A[*maxsize*];
+	int end = -1;
+	insert(2) //IF WE DONT WRITE THE ADDRESS WE WANT TO INSERT IT, IT WOULD AUTOMATICALLY WRITE IT TO THE BEGINNING
+	insert(4)
+	insert(6)
+	insert(7)
+	insert(9)
+	insert(5, 2) //AFTER THE COMMA WE WRITE AN ADDRESS TO INSERT IT, SO WE PUT IT TO THE A[2], SO OTHER NUMS ARE SHIFTING ONE RIGHT
+	remove(0) //REMOVES A NUM IN THE ADDRESS 0, WE WRITE AN ADDRESS TO DELETE THE NUM, SO THE NUMS ARE GOING 1 LEFT THAT WERE AHEAD THAT ADDRESS
+
+	//WHEN ARRAY IS FULL, CREATE A NEW LARGER ARRAY (DOUBLE FULL ARRAY'S SIZE), COPY PREVIOUS ONE INTO THE NEW ARRAY AND FREE THE PREVIOUS ARRAY
+	
+	Cost of Time:
+	1) Access - Read/Write Element At An Index - constant time O(1)
+	2) Insert - T proportional to n O(n)
+	3) Remove - O(n)
+	4) Adding a New Array (doubling it) - O(n) (O(n) is Time Complexity In Big-O notation)
+
+	Implementation:
+	We can access to any index of our array without cost of time.
+
+	Minuses:
+	Insufficient memory;
+	Cost of time when we insert or remove the index
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
