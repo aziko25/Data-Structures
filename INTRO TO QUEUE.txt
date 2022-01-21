@@ -1,0 +1,71 @@
+
+	Intro To Queues.
+
+	Queue ADT (Abstract Data Type)
+
+	Queue - First-In-First-Out (FIFO) 
+
+	Queue - a list or collection with the restriction that insertion can be performed
+	at one end (rear) and deletion can be performed at other end (front).
+
+	Operations:
+	1) EnQueue or Push (add)
+	2) DeQueue or Pop (delete)
+	void EnQueue(int x);
+	int DeQueue();
+	3) Front() or Peek() //just return element in front
+	4) IsEmpty();
+	All of them are O(1)
+
+	enqueue____________________   dequeue
+	[] =>                     => []
+	       ____________________
+			Q
+
+	_______
+	_______  EnQueue(2)
+	   Q
+	
+	_____
+        |2|       EnQueue(5)
+	_____
+
+	-------
+	|5|2|    EnQueue(3)
+	-------
+	
+	-------
+	|3|5|2|     Dequeue()
+	-------
+	-------
+        |3|5|       Front() => output would be 5
+	-------     IsEmpty() => False
+
+	Implementation: lets say we have a network printer that is connected for 4 computers. It can
+	serve only 1 computer at a time, so Queue DS would be helpful. It will serve first computer that ordered 
+	a printing first.
+
+	Applications:
+	1) Printer Queue
+	2) Process scheduling
+	3) Simulating wait
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+                  
