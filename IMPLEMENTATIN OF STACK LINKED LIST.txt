@@ -1,0 +1,21 @@
+
+	Stack - Linked List Implementation
+
+	Linked List:
+
+	head [100]
+	 |
+	 v
+       ___________    ___________    _________
+       | 2 | 200 | -> | 4 | 400 | -> | 6 | 0 | -> NULL 
+	100  	       200            400
+
+	Insert/delete:
+	- at end of list (tail) O(n)
+	- at beginning (head) O(1)
+
+	___________    ___________    __________     _________
+       | 2 | 200 | -> | 4 | 400 | -> | 6 | 350 |  -> | 3 | 0 | -> NULL
+	100  	       200            400             350
+
+	If we want to add a node at the beginning, then we delete the address in head and writing an address of the new node.

@@ -1,0 +1,287 @@
+
+	Using Stack To Reverse.
+
+	1) Reverse a string
+	2) Reverse a linked list
+
+	1.
+	________________________________
+	| H | E | L | L | O | \0 - end | - string
+
+	|     |
+	| 'O' |
+	| 'L' |
+	| 'L' |
+	| 'E' |
+	| 'H' |
+	|_____|
+	 Stack 
+
+	Problem: Reverse a string
+
+	________________________________
+	| O | E | L | L | O | \0 - end | - string
+
+	|     |
+	|     |
+	| 'L' |
+	| 'L' |   -Pop()
+	| 'E' |
+	| 'H' |
+	|_____|
+	 Stack 
+
+	________________________________
+	| O | L | L | L | O | \0 - end | - string
+
+	|     |
+	|     |
+	|     |
+	|     | -Pop()
+	| 'E' | -Pop()
+	| 'H' |
+	|_____|
+	 Stack 
+
+	________________________________
+	| O | L | L | E | O | \0 - end | - string
+
+	|     |
+	|     |
+	|     |
+	|     |
+	|     |
+	| 'H' |
+	|_____|
+	 Stack  AND ETC.
+
+	Code:
+
+#include<iostream>
+#include<stack>
+using namespace std;
+
+void reverse(char *C, int n)
+{
+    stack<char> S;
+    int i;
+
+    // Push into a stack
+    for (i = 0; i < n; i++)
+        S.push(C[i]); // O(n)
+
+    // Pop from a stack   
+    for (i = 0; i < n; i++)
+    {
+        C[i] = S.top();
+        S.pop();
+    }
+
+}
+
+int main()
+{
+    
+    char C[100];
+    cout << "\tEnter A String: \n\t";
+    gets_s(C);
+
+    reverse(C, strlen(C));
+
+    cout << "\n\tAfter reversing a string: \n\t" << C;
+    cout << endl << endl << endl;
+
+
+    system("pause");
+    return 0;
+}
+
+	2. Reverse A Linked List
+	
+	head[100]  temp[100]
+	
+	[2][150] -> [5][250] -> [3][300] -> [8][0] -> NULL       Iterative Solution:              Recursive (Implicit Stack):
+	  100         150          250       300                 Time - O(n); Space - O(1)        Time - O(n); Space - O(n)
+           i                                  j
+
+	| 100 |	
+	|_____|
+
+	head[100]  temp[150]
+	
+	[2][150] -> [5][250] -> [3][300] -> [8][0] -> NULL       Iterative Solution:              Recursive (Implicit Stack):
+	  100         150          250       300                 Time - O(n); Space - O(1)        Time - O(n); Space - O(n)
+           i                                  j
+
+	| 150 | 
+	| 100 |	 and etc.
+	|_____|
+
+	head[100]  temp[300]
+	
+	[2][150] -> [5][250] -> [3][300] -> [8][0] -> NULL       Iterative Solution:              Recursive (Implicit Stack):
+	  100         150          250       300                 Time - O(n); Space - O(1)        Time - O(n); Space - O(n)
+           i                                  j
+
+	| 300 |
+	| 250 |
+	| 150 | 
+	| 100 |	 
+	|_____|
+	
+	To reverse it we are doing the same but starting the head and temp from the end
+
+	Iterative Code:
+
+#include<iostream>
+using namespace std;
+
+struct node {
+    int data;
+    struct node* next;
+};
+
+// To create a demo we have to construct a linked list and this 
+// function is to push the elements to the list. 
+void push(struct node** head_ref, int data) {
+    struct node* node;
+    node = (struct node*)malloc(sizeof(struct node));
+    node->data = data;
+    node->next = (*head_ref);
+    (*head_ref) = node;
+}
+
+// Function to reverse the list
+void reverse(struct node** head_ref) {
+    struct node* temp = NULL;
+    struct node* prev = NULL;
+    struct node* current = (*head_ref);
+    while (current != NULL) {
+        temp = current->next;
+        current->next = prev;
+        prev = current;
+        current = temp;
+    }
+    (*head_ref) = prev;
+}
+
+// To check our program 
+void printnodes(struct node* head) {
+    while (head != NULL) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+}
+
+// Driver function
+int main() {
+    struct node* head = NULL;
+    push(&head, 1);
+    push(&head, 2);
+    push(&head, 3);
+    push(&head, 4);
+    push(&head, 5);
+    push(&head, 6);
+    push(&head, 7);
+    push(&head, 8);
+    push(&head, 9);
+    push(&head, 10);
+    cout << "Linked List Before Reversing" << endl;
+    printnodes(head);
+    reverse(&head);
+    cout << endl;
+    cout << "Linked List After Reversing" << endl;
+    printnodes(head);
+    return 0;
+}
+
+	Code Recursion Method:
+
+#include<iostream>
+using namespace std;
+
+
+struct Node {
+    int data;
+    struct Node* next;
+    Node(int data)
+    {
+        this->data = data;
+        next = NULL;
+    }
+};
+
+struct LinkedList {
+    Node* head;
+    LinkedList()
+    {
+        head = NULL;
+    }
+
+    Node* reverse(Node* head)
+    {
+        if (head == NULL || head->next == NULL)
+            return head;
+        // Recursive call
+        Node* rest = reverse(head->next);
+        head->next->next = head;
+
+        head->next = NULL;
+
+        return rest;
+    }
+
+    void print()
+    {
+        struct Node* temp = head;
+        while (temp != NULL) {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+    }
+
+    void push(int data)
+    {
+        Node* temp = new Node(data);
+        temp->next = head;
+        head = temp;
+    }
+};
+
+int main()
+{
+    LinkedList ll;
+    ll.push(320);
+    ll.push(34);
+    ll.push(315);
+    ll.push(385);
+
+    cout << "Linked List Before Reversing\n";
+    ll.print();
+
+    ll.head = ll.reverse(ll.head);
+
+    cout << "\nLinked List After Reversing \n";
+    ll.print();
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

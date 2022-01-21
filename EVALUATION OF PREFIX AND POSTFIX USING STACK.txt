@@ -1,0 +1,135 @@
+
+	Evaluation Of Prefix And Postfix Using Stack
+
+	A * B + C * D - E ==> { (A*B) + (C*D) } - E ==> 
+	==> { (AB*) + (CD*) } - E
+	==> { (AB*) (CD*) + } - E 
+	==> { (AB*) (CD*) + } E -
+	==> AB*CD* + E -
+	
+	AB*CD* + E - ==> A=2; B=3; C=5; D=4; E=9.
+	2 3* 5 4* + 9 -
+	6 5 4* + 9 -
+	6 20 + 9 -
+	26 9 - = 17
+
+	Scanning:
+	2 3* 5 4* + 9 -
+	List: 2,3 = 6;
+	List: 6, 5,4 = 20;
+	List: 6, 20;
+	List: 26,9;
+	List: 17.
+
+	Stack:
+	2 3* 5 4* + 9 -
+
+	|2|
+	|_|
+
+	|3| = 6
+	|2|
+	|_|
+	
+	|6|
+	|_| and etc.
+
+	Prefix evaluation:
+	2*3 + 5*4 - 9;
+	{ (2*3) + (5*4) } - 9;
+	{ (*23) + (*54) } - 9;
+	{ +(*23) (*54) } - 9;
+	- { + (*23) (*54) } 9;
+	-+*2 3 *5 4 9 = we need to scan from right to left.
+
+	|9|
+	|_|
+
+	|4|	
+	|9|
+	|_|
+
+	|5|
+	|4| //comes an operator, so we are popping 5 and 4 = 20
+	|9|
+	|_|
+
+	|2 0|
+	| 9 |
+	|___|
+
+	| 2 |
+	| 3 |
+	|2 0| //comes an operator, so we are popping 2 and 3 = 6;
+	| 9 |
+	|___|
+	
+	| 6 |
+	|2 0| //comes an operator "+", so we are popping 6 and 20 = 26
+	| 9 |
+	|___|
+
+	|2 6|
+	| 9 | //comes an operator "-", so we are popping 26 and 9 = 17
+	|___|
+	
+	|17|
+	|__|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

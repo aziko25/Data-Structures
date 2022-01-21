@@ -1,0 +1,82 @@
+
+	Introduction To Stack.
+
+	Stack ADT (Abstract Data Type)
+
+	Stack is a collection with item that can be put from the top and removed from the top.
+
+	Last-In-First-Out (LIFO)
+
+	Stack - is a list with the restriction that insertion and deletion can be performed only from one end called the top.
+
+	Operations: 
+	1) Push(x) - inserting
+	2) Pop() - removing
+	3) Top()
+	4) IsEmpty()
+	Their time comlpexity is O(1)
+
+	Stack is represented like:
+	|         |
+	|	  |
+	|	  | - its empty
+	|	  |
+	|_________|
+             S
+
+	If we want to add a number "2" then we write Push(2)
+	|         |
+	|	  |
+	|	  |
+	|_________|
+	|    2    |
+        |_________|  
+	     S	    
+
+	If we want to add another number "10" then we write Push(10)
+	|         |
+	|_________|
+	|    10	  |
+	|_________|
+	|    2    |
+        |_________|  
+	     S	     and etc.
+
+	If we want to remove, we write Pop()
+	|         |
+	|	  |
+	|	  |
+	|_________|
+	|    2    |
+        |_________|  
+	     S	    
+
+	If write Top() it will return you the number which is at the top. 
+	IsEmpty() will give you "false", because there are num in the stack.
+
+	Applications of stack:
+	- Function calls / Recursion
+	- Undo operation (Ctrl Z)
+	- Balanced Parentheses, for example: { () }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

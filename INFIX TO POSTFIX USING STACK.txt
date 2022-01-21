@@ -1,0 +1,261 @@
+
+	Infix To Postfix Using Stack.
+
+	Infix: A + B * C - D * E
+
+		
+	
+	| * |	
+	| + |        
+	|___|
+
+	Postfix: A B C 
+
+		
+	
+	| * |	
+	| + |
+	|___|
+
+	Postfix: ABC*+
+
+		
+	
+	| * |	
+	| - |
+	|___|
+
+	Postfix: ABC*+ D E
+
+		
+	|   |
+	|___|
+
+	Postfix: ABC*+DE*- 
+
+	If expression is nested = ((A+B)* C - D) * E => AB
+
+	|   |	
+	| + |
+	| ( |	
+	| ( |
+	|___|
+
+	If expression is nested = ((A+B)* C - D) * E => AB+C
+
+	|   |	
+	|   |
+	| * |	
+	| ( |
+	|___|
+
+	If expression is nested = ((A+B)* C - D) * E => AB+C*D
+
+	|   |	
+	|   |
+	| - |	
+	| ( |
+	|___|
+
+	If expression is nested = ((A+B)* C - D) * E => AB+C*D-E
+	
+	| * |
+	|___|
+
+	If expression is nested = ((A+B)* C - D) * E => AB+C*D-E*
+	
+	|   |
+	|___|
+
+	Another example: A * (B+C) => ABC
+
+	| + |
+	| ( |
+	| * |
+	|___|
+
+	Another example: A * (B+C) => ABC+
+
+	| * |
+	|___|
+
+	Another example: A * (B+C) => ABC+*
+
+	|   |
+	|___|
+
+Code:
+
+#include<iostream>
+#include <string>
+
+using namespace std;
+using std::string;
+
+class stack {
+public:
+    int top;
+    char* astack;
+    int size;
+    stack(int s) {
+        size = s;
+        top = -1;
+        astack = new char[size];
+    }
+    void Push(char element);
+    char Pop();
+    bool isEmpty();
+    bool isFull();
+    char Peek();
+    void clear();
+    void print(stack* ptr);
+};
+
+char stack::Peek() {
+    if (isEmpty()) {
+        return 0;
+    }
+    return astack[top];
+}
+
+void stack::clear() {
+    top = -1;
+    delete astack;
+    astack = new char(size);
+};
+
+void stack::Push(char element) {
+    if (isFull()) {
+        cout << "The stack is already Full" << endl;
+        return;
+    }
+    else
+        astack[++top] = element;
+    return;
+}
+
+char stack::Pop() {
+    if (isEmpty()) {
+        cout << "The Array is already empty" << endl;
+    }
+    else {
+        return astack[--top];
+    }
+}
+
+void stack::print(stack* ptr) {
+    for (int i = 0; i < ptr->top; i++) {
+        cout << ptr->astack[i];
+    }
+}
+
+bool stack::isEmpty() {
+    if (top == -1) {
+        return 1;
+    }
+    return 0;
+}
+
+bool stack::isFull() {
+    if (top == size - 1) {
+        return 1;
+    }
+    return 0;
+}
+
+int precedence(char element) {
+    int weight = -1;
+    switch (element) {
+    case '+':
+    case '-':
+        weight = 1;
+    case '*':
+    case '/':
+        weight = 2;
+    case '$':
+        weight = 3;
+    }
+    return weight;
+}
+
+bool IsOperator(char C) {
+    if (C == '+' || C == '-' || C == '*' || C == '/' || C == '$')
+        return true;
+    return false;
+}
+
+bool IsOperand(char C) {
+    if (C >= '0' && C <= '9') return true;
+    if (C >= 'a' && C <= 'z') return true;
+    if (C >= 'A' && C <= 'Z') return true;
+    return false;
+}
+
+int main() {
+    string infix;
+    getline(cin, infix);
+
+    int j = 1;
+
+    string post = "";
+
+    stack* postfix = new stack(50);
+    for (int i = 0; i != infix.size(); i++) {
+        char element = infix[i];
+        if (IsOperand(element)) {
+            post += element;
+        }
+        if (IsOperator(element)) {
+            if (precedence(element) > precedence(postfix->Peek())) {
+                postfix->Push(element);
+            }
+            else {
+                while (precedence(element) <= precedence(postfix->Peek())) {
+                    if (precedence(element) < precedence(postfix->Peek())) {
+                        post += postfix->Pop();
+                    }
+                    if (precedence(element) == precedence(postfix->Peek())) {
+                        cout << postfix->Peek() << endl;
+                        post += postfix->Pop();
+                    }
+                }
+            }
+        }
+    }
+
+    while (!postfix->isEmpty()) {
+        post += postfix->Pop();
+    }
+
+    cout << "Postfix expression is : " << post;
+
+    cout << endl;
+    system("pause");
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

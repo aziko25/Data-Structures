@@ -1,0 +1,31 @@
+
+	Infix, Postfix, Prefix.
+
+	Evaluation of expressions
+	2 + 3
+	A + B   All of them have <operand> <operator> <operand>  = INFIX
+	(p * 2)
+
+	Operand -> object on which operation is performed
+	For instance: A -> operand; + -> operator; B -> operator.	
+
+	Infix.
+	2 + 3 = 5
+	4 + 6 * 2 -> we have to set a order of solving. 
+	Order of operation:
+	1) Parentheses () {} []
+	2) Exponents (right to left)
+	3) Multiplication and division
+	4) Addition and subtraction
+
+	Prefix (Polish notation)
+	<operator> <operand> <operand>
+	Infix     Prefix       Postfix
+	2 + 3     + 2 3        2, 3+
+	p - q     -pq          pq-
+	a+b*c     +a*bc        abc*+  
+
+	Postfix is reverse polish notation.  
+
+	Infix is human readable and Postfix and Prefix are good for machines to save some memory
+                                                                                                                                                                                
