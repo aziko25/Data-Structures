@@ -1,0 +1,22 @@
+
+	Binary Tree.
+
+	Binary tree - each node can have at most 2 children.
+
+	Strict Binary Tree - a tree that has either 0 childs or 2 childs.
+
+	Complete Binary Tree - all levels except possibly the last are completely filled and all
+	nodes are as left as possible. Max Number 0f nodes at level i = 2 in power of i.
+
+	Perfect Binary Tree - is a tree that every node has 2 childs. Maximum Number of nodes in a tree
+	with height h = 2 in pow 0 + 2 in pow 1 + 2 in pow h = 2 in pow h+1   - 1 = 2 in pow(num of levels) - 1.
+	Height of a perfect binary tree => h = log2(n+1) - 1. n = number of nodes in a perfect lvl3 binary tree.
+	h = log2 16 - 1 = h = 4 - 1 = 3.
+	Min height = log2 n and Max height = n - 1
+
+	Balanced Binary Tree - difference between height of left and right subtree for every node is not more than K (mostly 1)
+	Height of an empty tree = -1 and height of tree with 1 node = 0.
+
+	We can implement binary tree using:
+	1) Dynamically created nodes
+	2) Arrays

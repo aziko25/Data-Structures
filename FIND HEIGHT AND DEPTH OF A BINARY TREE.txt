@@ -1,0 +1,131 @@
+
+	Find A Height Of A Binary Tree.
+
+	Height of a tree = number of edges in longest path from root to a leaf node. For example:
+
+					[]
+				     /      \
+				  2 []        []
+				  /    \    /    \
+				[]     []  []    []     - height of a tree is 3 (we count the num of sticks that connects the nodes)
+				      /  \              Height of tree = height of a root.
+				     []  [] 		Height of tree with 1 node = 0
+							Depth of a node = number of edges in path from root to that node.
+							In the example above node "2" has depth 1 and height 2.
+
+Code For Finding Height And Depth Of A BST:
+
+#include <iostream>
+
+using namespace std;
+
+// structure of a binary tree 
+struct node
+{
+    int data;    // to store the value of a node in tree
+    node* left;   // pointer to the left child
+    node* right;   // pointer to the right child
+};
+
+// function to find the maximum height of binary tree 
+int FindHeight(node* node)
+{
+    if (node == NULL)  // when the subtree is empty
+        return 0;
+    else
+    {
+        int leftH, rightH;
+        //find the height of left subtree 
+        leftH = FindHeight(node->left);
+        //find the height of right subtree 
+        rightH = FindHeight(node->right);
+        // return the maximum height 
+        if (leftH > rightH)
+            return(leftH + 1);
+        else
+            return(rightH + 1);
+    }
+}
+
+// function to get new node for the tree 
+node* getNode(int data)
+{
+    node* newNode = new node();
+    newNode->data = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return(newNode);
+}
+int main()
+{
+    // creating the binary tree 
+    node* root = getNode(1);
+    root->left = getNode(2);
+    root->right = getNode(3);
+    root->left->left = getNode(4);
+    root->left->right = getNode(5);
+    root->right->left = getNode(6);
+    root->right->right = getNode(7);
+    cout << "The Height of the binary tree is " << FindHeight(root);
+    return 0;
+} //FIND HEIGHT OF A BST
+
+
+
+
+#include <iostream>
+using namespace std;
+
+// structure of a binary tree 
+struct node
+{
+    int data;    // to store the value of a node in tree
+    node* left;   // pointer to the left child
+    node* right;   // pointer to the right child
+};
+
+// Finding the depth of tree 
+int FindDepth(node* node)
+{
+    if (node == NULL)  // when the subtree is empty
+        return 0;
+    else
+    {
+        int leftD, rightD;
+        //find the depth of left child 
+        leftD = FindDepth(node->left);
+        //find the depth of right child 
+        rightD = FindDepth(node->right);
+        // return the maximum depth 
+        if (leftD > rightD)
+            return(leftD + 1);
+        else
+            return(rightD + 1);
+    }
+}
+
+// function to get new node for the tree 
+node* getNode(int data)
+{
+    node* newNode = new node();
+    newNode->data = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return(newNode);
+}
+int main()
+{
+    // creating the binary tree 
+    node* root = getNode(1);
+    root->left = getNode(2);
+    root->right = getNode(3);
+    root->left->left = getNode(4);
+    root->left->right = getNode(5);
+    root->right->left = getNode(6);
+    root->right->right = getNode(7);
+    root->left->right->right = getNode(10);
+    cout << "The Depth of the binary tree is " << FindDepth(root) - 1;
+    cout << endl << endl << endl;
+    system("pause>0");
+    return 0;
+} //FIND DEPTH OF BST
