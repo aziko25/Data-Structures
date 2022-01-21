@@ -1,0 +1,23 @@
+
+	Implementation in C/C++.
+
+	struct node { 
+	int data;
+	node* link;
+	}
+	node* A;
+	A = null; //empty list
+	node* temp = new node();
+	temp -> data = 2;
+	temp -> link = null;
+	A = temp;
+
+	temp = new node();
+	temp -> data = 4;
+	temp -> link = null;
+
+	TRAVERSAL:
+	node* temp1 = A;
+	while (temp1 -> link != null) { 
+	temp1 = temp1 -> link;
+	}

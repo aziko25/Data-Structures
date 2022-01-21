@@ -1,0 +1,12 @@
+
+	Doubly Linked List.
+
+	In Doubly Linked List each node has a 2 fields - 1 for previous and 1 for next. For Example:
+
+             400                   600               800
+        _________________________________________________________
+	| 0 | 1 | 600 | | | | 400 | 5 | 800 | | | | 600 | 7 | 0 |
+        |___|___|_____|_|_|_|_____|___|_____|_|_|_|_____|___|___|
+
+	-reverse look up - adv
+	-extra memory for pointer to previous node - disadv
