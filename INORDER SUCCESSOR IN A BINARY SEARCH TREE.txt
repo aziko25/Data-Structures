@@ -1,0 +1,57 @@
+
+	Inorder Successor In A Binary Search Tree.
+
+	Inorder (Left, root, right) - time complexity O(n).
+	
+	h = log2 n
+
+	Case 1:
+	Go deep to leftmost node in right subtree OR find min in right subtree.
+
+	
+				15
+			     /      \
+			   10       20         Firstly, we go to left-child of the root "10". He has a 2 ways - right and left.
+			  /  \      /  \       We choose right child and go down there deeply so we will find it's minimum "11".
+			8     12   17   25
+		      /      /     /      \ 
+		     6      11    16       27
+
+							Case 2: 
+							No right subtree. Go to the nearest ancestor for which given node would be in left subtree
+
+CODE:
+
+#include <iostream>
+using namespace std;
+class TreeNode{
+public:
+   int val;
+   TreeNode *left, *right;
+   TreeNode(int data){
+      val = data;
+      left = NULL;
+      right = NULL;
+   }
+};
+class Solution {
+public:
+   TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
+      if(!root) return NULL;
+      if(root->val <= p->val){
+         return inorderSuccessor(root->right, p);
+      }
+      else{
+         TreeNode* option = inorderSuccessor(root->left, p);
+         return !option ? root : option;
+      }
+   }
+};
+main(){
+   TreeNode *root = new TreeNode(2);
+   root->left = new TreeNode(1);
+   root->right = new TreeNode(3);
+   TreeNode *p = root->left;
+   Solution ob;
+   cout << (ob.inorderSuccessor(root, p))->val;
+}
