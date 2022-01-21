@@ -1,0 +1,30 @@
+
+	Intro To Graphs.
+
+	Linear Data Structures = Array, Linked List, Stack, Queue.
+	Non-Linear Data Structure = Binary Trees
+
+	Graph - is a collection of object entities called nodes or vertices connected with edges.
+
+	No rules for connection.
+	
+	Graph: A graph G is an ordered pair of a ser V of vertities and a set E of edges.
+	G = (V, E)
+
+	Ordered pair = (a, b) ! (b, a) if a ! b
+	Unordered pair = {a, b} = {b, a}
+
+							V1---------V2
+	Edges:					       / |         |  \
+	directed and undirected			      /  |         |   \
+						    V3   V4        V5   V6      This graph has a 10 edges (sticks) and 8 vertities.
+						    |     \       /       /     V = {V1, V2, V3, V4, V5, V6, V7, V8}
+						    |      \     /       /      E = { {V1, V2}, { V1, V3}, {V1, V4}, {V3, V7}, {V4, V8, {V7, V8}  
+						    |       \   /       /             {V2, V5}, {V2, V6}, {V5, V8}, {V6, V8} }
+		   u      v			    V7________V8_______/
+	Directed = []---->[] = (u, v) - u is origin and v - destination. 
+	Undirected = []----[] = {u, v}
+
+	Web Crawling - Graph Traversal.
+
+	Weighted vs Unweighted graphs. Weighted graph is searching a way that will cost min and unweighted graph searches a shortest EDGES.
